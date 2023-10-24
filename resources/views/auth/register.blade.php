@@ -1,52 +1,69 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+@extends('client.auth.main_master')
+        @section('title')
+            Register V
+        @endsection
+    @section('content')
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('frontend/auth/images/bg-01.jpg');">
+			<div class="wrap-login100">
+				<form method="POST" action="{{ route('register') }}" class="login100-form validate-form">
+                    @csrf
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+					<span class="login100-form-title p-b-34 p-t-27">
+						Register
+					</span>
+                         <!-- Name -->
+                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" id="name" type="text" name="name" value="old('name')" placeholder="Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                    <!-- Email Address -->
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" id="email" type="email" name="email" value="old('email')" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+                    <!-- Password -->
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" id="password" type="password" name="password" required autocomplete="current-password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+                     <!-- Confirm Password -->
+                     <div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Sign Up
+						</button>
+					</div>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                    <div class="text-center">
+                        <a href="{{ route('login') }}">
+                        Already have an account! {{ __('Login') }}
+                        </a>
+                    </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+	<div id="dropDownSelect1"></div>
+@endsection
