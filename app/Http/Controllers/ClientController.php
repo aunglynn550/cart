@@ -23,8 +23,5 @@ class ClientController extends Controller
         return view('client.checkout'); 
     }//end method
 
-    public function login(){
-        return view('client.auth.login'); 
-    }//end method
-
+    
 }
