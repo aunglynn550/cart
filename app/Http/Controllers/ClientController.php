@@ -23,5 +23,5 @@ class ClientController extends Controller
         return view('client.checkout'); 
     }//end method
 
-    
+     
 }
